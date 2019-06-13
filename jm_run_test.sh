@@ -30,7 +30,8 @@ echo "**** LOG: Results will appear under: $RES_DIR"
 mkdir -p $RES_DIR
 
 # run test, pass args and save logs
-printf "**** LOG: Starting jmeter test: $1\n**** LOG: Additional arguments: ${@:3}\n"
+echo "**** LOG: Starting jmeter test: $1"
+echo "**** LOG: Additional arguments: ${@:3}"
 jmeter -n -t $1 -l $RES_DIR/res.csv -e -o $RES_DIR/dashboard -j $RES_DIR/jmeter.log -JRES_DIR=$RES_DIR ${@:3} | tee $RES_DIR/console.log
 
 # compress results
